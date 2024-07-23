@@ -1,5 +1,5 @@
 # Use uma imagem base com suporte a Python e Jupyter
-FROM jupyter/base-notebook:python-3.10.0
+FROM jupyter/base-notebook:latest
 
 # Instale pacotes adicionais, incluindo sudo
 USER root
