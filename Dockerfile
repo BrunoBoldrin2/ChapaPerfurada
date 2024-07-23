@@ -1,17 +1,14 @@
 # Use uma imagem base com suporte a Python e Jupyter
 FROM jupyter/base-notebook:latest
 
-# Instale pacotes adicionais, incluindo sudo
+# Instale pacotes adicionais, incluindo sudo e dependências gráficas
 USER root
 RUN apt-get update && \
-    apt-get install -y sudo && \
-    # Adicione outros pacotes necessários aqui
-    pip install --no-cache-dir \
-    numpy \
-    pandas \
-    matplotlib \
-    # Adicione outros pacotes Python necessários aqui
-    && apt-get clean && rm -rf /var/lib/apt/lists/*
+    apt-get install -y sudo \
+                       libgl1-mesa-glx \
+                       libgl1-mesa-dri \
+                       # Adicione outros pacotes necessários aqui
+                       && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Configure o sudo para o usuário jovyan
 RUN echo "jovyan ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/jovyan
