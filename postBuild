@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# Atualizar os pacotes e instalar libGL
+apt-get update && apt-get install -y libgl1-mesa-glx
+
+# Instalar CadQuery via pip
+pip install cadquery
